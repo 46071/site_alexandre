@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shopping Park – Estacionamento</title>
+  <meta name="description" content="Encontre vagas disponíveis de forma rápida e prática no Shopping Park.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ CABEÇALHO ============ -->
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Shopping Park – início">
+      <svg class="brand__icon" viewBox="0 0 64 64" aria-hidden="true">
+        <defs>
+          <linearGradient id="bagGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#4aa8ff"/><stop offset="1" stop-color="#1c4fe0"/>
+          </linearGradient>
+        </defs>
+        <path d="M22 22v-4a10 10 0 0 1 20 0v4" fill="none" stroke="#cfe6ff" stroke-width="4" stroke-linecap="round"/>
+        <path d="M10 22h44l3 34a4 4 0 0 1-4 4H11a4 4 0 0 1-4-4z" fill="url(#bagGrad)"/>
+      </svg>
+      <span class="brand__text">Shopping<br>Park</span>
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="#inicio" class="nav__link is-active" data-target="inicio">
+        <svg viewBox="0 0 24 24"><path d="M12 3 2 12h3v8h5v-5h4v5h5v-8h3z"/></svg>Início
+      </a>
+      <a href="#estacionamento" class="nav__link" data-target="estacionamento">
+        <svg viewBox="0 0 24 24"><path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11a2 2 0 0 1 2 2v5h-2v2h-3v-2H8v2H5v-2H3v-5a2 2 0 0 1 2-2zm2.3 0h9.4l-1-3H8.3zM6.5 14a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zm11 0a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg>Estacionamento
+      </a>
+      <a href="#sobre" class="nav__link" data-target="sobre">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2zm0-8h-2V7h2z"/></svg>Sobre
+      </a>
+      <a href="#ajuda" class="nav__link" data-target="ajuda">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 16h-2v-2h2zm2.1-7.8-.9.9c-.7.7-1.2 1.2-1.2 2.4h-2v-.5c0-1 .5-1.9 1.2-2.6l1.2-1.2a1.7 1.7 0 0 0 .5-1.2 2 2 0 0 0-4 0H8a4 4 0 0 1 8 0c0 .9-.4 1.7-.9 2.2z"/></svg>Ajuda
+      </a>
+    </nav>
+
+    <div class="clock" aria-live="off">
+      <svg viewBox="0 0 24 24" class="clock__icon"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <div>
+        <strong id="clockTime">--:--</strong>
+        <small id="clockDate">--/--/----</small>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="inicio">
+      <div class="hero__text">
+        <h1>Seu estacionamento<br>mais <span>inteligente!</span></h1>
+        <p>Encontre vagas disponíveis de forma rápida<br>e prática no Shopping Park.</p>
+        <a href="#estacionamento" class="btn">
+          <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Verificar Vagas
+          <svg viewBox="0 0 24 24" class="btn__arrow"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- ilustração do shopping -->
+      <svg class="hero__art" viewBox="0 0 800 300" preserveAspectRatio="xMaxYMax slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#27438c" stop-opacity="0"/><stop offset="1" stop-color="#e9a15a" stop-opacity=".55"/>
+          </linearGradient>
+          <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#8b86a8"/><stop offset="1" stop-color="#4b4a6e"/>
+          </linearGradient>
+          <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffd58a"/><stop offset="1" stop-color="#ff9d3c"/>
+          </linearGradient>
+        </defs>
+        <rect width="800" height="300" fill="url(#sky)"/>
+        <!-- prédio -->
+        <polygon points="250,200 760,110 760,300 250,300" fill="url(#wall)"/>
+        <polygon points="250,200 760,110 760,128 250,222" fill="#d8d6e8" opacity=".85"/>
+        <g fill="url(#glass)" opacity=".95">
+          <rect x="420" y="232" width="320" height="50" transform="skewY(-9) translate(0,32)"/>
+        </g>
+        <g stroke="#3d3c5c" stroke-width="3" opacity=".7">
+          <line x1="470" y1="170" x2="470" y2="290"/><line x1="530" y1="162" x2="530" y2="290"/>
+          <line x1="590" y1="154" x2="590" y2="290"/><line x1="650" y1="146" x2="650" y2="290"/>
+          <line x1="710" y1="138" x2="710" y2="290"/>
+        </g>
+        <!-- logo na fachada -->
+        <g transform="translate(430 120) rotate(-9)">
+          <path d="M8 18v-3a8 8 0 0 1 16 0v3" fill="none" stroke="#cfe6ff" stroke-width="3" stroke-linecap="round"/>
+          <path d="M0 18h32l2 26H-2z" fill="#3b82f6"/>
+          <text x="52" y="28" fill="#fff" font-family="Poppins, Arial" font-weight="700" font-size="26">Shopping</text>
+          <text x="52" y="56" fill="#fff" font-family="Poppins, Arial" font-weight="700" font-size="30">Park</text>
+        </g>
+        <!-- palmeiras -->
+        <g fill="#0d3b2c">
+          <path d="M340 300c4-60 6-100 4-150h6c2 50 0 90-4 150z" fill="#4a3a2a"/>
+          <path d="M347 148c-40-30-70-20-90 10 30-12 55-8 90-10zM347 148c40-30 70-20 90 10-30-12-55-8-90-10zM347 148c-20-45-50-55-80-40 35 0 55 20 80 40zM347 148c20-45 50-55 80-40-35 0-55 20-80 40z"/>
+          <path d="M610 300c-3-40-3-70 0-110h5c3 40 3 70 0 110z" fill="#4a3a2a"/>
+          <path d="M612 188c-30-25-55-18-70 6 24-9 44-6 70-6zM612 188c30-25 55-18 70 6-24-9-44-6-70-6zM612 188c-14-35-38-42-60-30 28 0 44 14 60 30zM612 188c14-35 38-42 60-30-28 0-44 14-60 30z"/>
+          <path d="M770 300c-2-50-2-90 0-140h5c2 50 2 90 0 140z" fill="#4a3a2a"/>
+          <path d="M772 158c-35-30-62-22-80 8 28-10 52-8 80-8zM772 158c35-30 62-22 80 8-28-10-52-8-80-8z"/>
+        </g>
+      </svg>
+    </section>
+
+    <!-- ============ CONTADORES ============ -->
+    <section class="stats" aria-label="Resumo de vagas livres">
+      <article class="stat stat--comum" data-type="comum">
+        <div class="stat__icon">
+          <svg viewBox="0 0 24 24"><path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11a2 2 0 0 1 2 2v5h-2v2h-3v-2H8v2H5v-2H3v-5a2 2 0 0 1 2-2zm2.3 0h9.4l-1-3H8.3zM6.5 14a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zm11 0a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg>
+        </div>
+        <div class="stat__body">
+          <h3>Vagas Livres</h3>
+          <strong class="stat__num" id="numComum">0</strong>
+          <div class="bar"><i id="barComum"></i></div>
+          <small id="subComum"></small>
+        </div>
+      </article>
+
+      <article class="stat stat--pcd" data-type="pcd">
+        <div class="stat__icon">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="4" r="2"/><path d="M10 7h2v5h4.5l2.5 6.5-1.9.7L15.2 14H10zM8.2 11.2l1.4.6A4 4 0 0 0 11 19a4 4 0 0 0 3.6-2.3l1.8.9A6 6 0 1 1 8.2 11.2z"/></svg>
+        </div>
+        <div class="stat__body">
+          <h3>Vagas PCD</h3>
+          <strong class="stat__num" id="numPcd">0</strong>
+          <div class="bar"><i id="barPcd"></i></div>
+          <small id="subPcd"></small>
+        </div>
+      </article>
+
+      <article class="stat stat--idoso" data-type="idoso">
+        <div class="stat__icon">
+          <svg viewBox="0 0 24 24"><circle cx="10" cy="4" r="2"/><path d="M8.5 7h3.3c1 0 1.7.6 1.9 1.5l.5 3 2.2 1.3-.9 1.5-2.7-1.6L12 13l2 3v6h-2v-5l-1.8-2.6-.9 7.6H7.2l1.4-11.5-1.1 1-.9-1.5zM17 12h1.6v10H17z"/></svg>
+        </div>
+        <div class="stat__body">
+          <h3>Vagas Idosos</h3>
+          <strong class="stat__num" id="numIdoso">0</strong>
+          <div class="bar"><i id="barIdoso"></i></div>
+          <small id="subIdoso"></small>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ MAPA + LATERAL ============ -->
+    <section class="main-grid" id="estacionamento">
+      <div class="card map-card">
+        <div class="map-card__head">
+          <h2>
+            <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+            Mapa do Estacionamento
+          </h2>
+          <div class="filters" role="group" aria-label="Filtrar vagas">
+            <button class="chip is-active" data-filter="todas">Todas</button>
+            <button class="chip" data-filter="comum">Comuns</button>
+            <button class="chip" data-filter="pcd">PCD</button>
+            <button class="chip" data-filter="idoso">Idosos</button>
+          </div>
+        </div>
+
+        <div class="map-wrap">
+          <div class="zoom">
+            <button id="zoomIn" aria-label="Aumentar zoom">+</button>
+            <button id="zoomOut" aria-label="Diminuir zoom">−</button>
+          </div>
+          <div class="map-scroll" id="mapScroll">
+            <div class="map" id="map">
+              <div class="mall"><svg viewBox="0 0 64 64"><path d="M22 22v-4a10 10 0 0 1 20 0v4" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/><path d="M12 22h40l2 32H10z" fill="none" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"/></svg>Shopping<br>Park</div>
+              <div class="lot" id="lot"></div>
+            </div>
+          </div>
+        </div>
+
+        <ul class="legend">
+          <li><i class="dot dot--livre"></i>Vaga Livre</li>
+          <li><i class="dot dot--ocupada"></i>Vaga Ocupada</li>
+          <li><i class="dot dot--pcd"></i>Vaga PCD</li>
+          <li><i class="dot dot--idoso"></i>Vaga Idosos</li>
+        </ul>
+        <p class="map-hint" id="spotInfo">Toque em uma vaga para ver os detalhes.</p>
+      </div>
+
+      <aside class="side">
+        <div class="status" id="statusBox">
+          <div class="status__check" id="statusIcon">
+            <svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="status__text">
+            <strong id="statusTitle">Vagas encontradas!</strong>
+            <span id="statusMsg">Há vagas disponíveis para todos.</span>
+          </div>
+          <svg class="status__car" viewBox="0 0 24 24"><path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11a2 2 0 0 1 2 2v5h-2v2h-3v-2H8v2H5v-2H3v-5a2 2 0 0 1 2-2zm2.3 0h9.4l-1-3H8.3zM6.5 14a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zm11 0a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+        </div>
+
+        <div class="card tips">
+          <h3>
+            <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2zm-3 17h6v1.5a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 20.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            Dicas Úteis
+          </h3>
+          <ul>
+            <li><span class="tick"></span>Prefira as vagas indicadas para PCD e Idosos.</li>
+            <li><span class="tick"></span>Siga as sinalizações do shopping.</li>
+          </ul>
+        </div>
+
+        <div class="goodbye">
+          <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="26" fill="none" stroke="#fbbf24" stroke-width="4"/><circle cx="23" cy="26" r="3.5" fill="#fbbf24"/><circle cx="41" cy="26" r="3.5" fill="#fbbf24"/><path d="M19 38a14 12 0 0 0 26 0" fill="none" stroke="#fbbf24" stroke-width="4" stroke-linecap="round"/></svg>
+          <div><strong>Boas compras!</strong><em>Shopping Park</em></div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ============ SOBRE ============ -->
+    <section class="info" id="sobre">
+      <div class="card">
+        <h2>Sobre o sistema</h2>
+        <p>O painel do Shopping Park mostra em tempo real a disponibilidade de vagas <strong>comuns</strong>, <strong>PCD</strong> e <strong>idosos</strong>, para que você encontre onde estacionar sem perder tempo rodando pelo estacionamento.</p>
+        <p>As informações são atualizadas automaticamente a cada poucos segundos. Os dados exibidos nesta demonstração são simulados.</p>
+        <dl class="facts">
+          <div><dt>Total de vagas</dt><dd id="factTotal">—</dd></div>
+          <div><dt>Ocupação geral</dt><dd id="factOcc">—</dd></div>
+          <div><dt>Última atualização</dt><dd id="factUpd">—</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============ AJUDA ============ -->
+    <section class="info" id="ajuda">
+      <div class="card">
+        <h2>Ajuda</h2>
+        <details>
+          <summary>Como ler o mapa?</summary>
+          <p>Verde indica vaga livre; cinza, vaga ocupada. Vagas PCD aparecem em azul e vagas para idosos em roxo (quando livres).</p>
+        </details>
+        <details>
+          <summary>Posso filtrar por tipo de vaga?</summary>
+          <p>Sim. Use os botões <em>Todas, Comuns, PCD</em> e <em>Idosos</em> acima do mapa para destacar apenas o tipo desejado.</p>
+        </details>
+        <details>
+          <summary>Quem pode usar as vagas PCD e Idosos?</summary>
+          <p>Somente pessoas com deficiência e idosos (60+) com credencial válida, conforme a legislação. Respeite a sinalização.</p>
+        </details>
+        <details>
+          <summary>As informações são em tempo real?</summary>
+          <p>O painel atualiza automaticamente. Nesta versão de demonstração os dados são simulados.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© <span id="year"></span> Shopping Park · Boas compras!</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
