@@ -2,39 +2,31 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Shopping Park – Estacionamento</title>
 <meta name="description" content="Veja vagas livres e reserve a sua no Shopping Park.">
 <meta name="theme-color" content="#14532d">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="top">
-  <a class="brand" href="#inicio"><b>P</b> Shopping Park</a>
-  <nav>
-    <a href="#vagas">Vagas</a><a href="#reserva">Minha reserva</a><a href="#carga">Recarga</a><a href="#ajuda">Ajuda</a>
-  </nav>
-</header>
+<header class="top"><a class="brand" href="#inicio"><b>P</b> Shopping Park</a><span class="live">● Ao vivo</span></header>
 
 <main>
   <section class="hero" id="inicio">
-    <h1>Achou sua vaga? Reserve antes de chegar.</h1>
-    <p>Veja em tempo real as vagas para carros e motos e guarde a sua por 15 minutos.</p>
-    <a class="btn" href="#vagas">Ver vagas e reservar</a>
+    <h1>Sua vaga garantida antes de chegar.</h1>
+    <p>Carros, motos, PCD, idosos e recarga elétrica. A reserva vale por 15 minutos.</p>
+    <button class="btn" id="quick">Reservar uma vaga</button>
   </section>
 
   <section class="stats" id="stats" aria-label="Vagas livres por tipo"></section>
   <div class="status" id="status" role="status"></div>
 
   <section class="card" id="vagas">
-    <h2>Mapa do estacionamento</h2>
-    <div class="chips" id="chips" role="group" aria-label="Filtrar vagas"></div>
-    <div class="map" id="map"></div>
+    <div id="view"></div>
+    <div class="sel" id="sel" hidden></div>
     <ul class="legend">
       <li><i class="d free"></i>Livre</li><li><i class="d busy"></i>Ocupada</li><li><i class="d res"></i>Reservada</li>
-      <li><span class="sym">♿</span>PCD</li><li><span class="sym">60+</span>Idosos</li><li><span class="sym">⚡</span>Recarga</li>
     </ul>
-    <div class="sel" id="sel">Toque em uma vaga para ver os detalhes.</div>
   </section>
 
   <section class="card" id="reserva">
@@ -44,33 +36,40 @@
 
   <section class="card ev" id="carga">
     <h2>⚡ Recarga de carros elétricos</h2>
-    <p>Poucas vagas têm carregador. Elas são exclusivas para veículos elétricos em recarga.</p>
+    <p>Poucas vagas têm carregador e são exclusivas para carros elétricos. Fica no setor “Recarga elétrica”.</p>
     <div id="evList" class="evlist"></div>
   </section>
 
   <section class="card" id="ajuda">
     <h2>Ajuda</h2>
-    <details><summary>Como reservar?</summary><p>Toque em uma vaga verde, confira os detalhes e escolha “Reservar esta vaga”. Informe a placa e confirme. A vaga fica amarela e é sua por 15 minutos.</p></details>
-    <details><summary>E se eu me atrasar?</summary><p>Passados os 15 minutos a reserva expira e a vaga volta a ficar livre para outras pessoas.</p></details>
-    <details><summary>Quem pode usar vagas PCD e Idosos?</summary><p>Pessoas com deficiência e idosos (60+) com credencial válida. Ao reservar, você confirma que possui a credencial.</p></details>
-    <details><summary>Os dados são em tempo real?</summary><p>Nesta demonstração, os dados são simulados e mudam a cada poucos segundos.</p></details>
+    <details><summary>Como reservar?</summary><p>Toque em “Reservar uma vaga”, escolha o tipo e informe a placa. Ou abra um setor, toque numa vaga verde e confirme.</p></details>
+    <details><summary>E se eu me atrasar?</summary><p>Passados 15 minutos a reserva expira e a vaga volta a ficar livre.</p></details>
+    <details><summary>Quem pode usar vagas PCD e Idosos?</summary><p>Pessoas com deficiência e idosos (60+) com credencial válida. Ao reservar, você confirma que a possui.</p></details>
+    <details><summary>Os dados são em tempo real?</summary><p>Nesta demonstração os dados são simulados e mudam a cada poucos segundos.</p></details>
   </section>
+  <footer>© <span id="year"></span> Shopping Park · Boas compras!</footer>
 </main>
 
-<footer>© <span id="year"></span> Shopping Park · Boas compras!</footer>
+<nav class="bnav" aria-label="Navegação">
+  <a href="#vagas"><span>🅿️</span>Vagas</a><a href="#reserva"><span>🕒</span>Reserva</a><a href="#carga"><span>⚡</span>Recarga</a><a href="#ajuda"><span>❓</span>Ajuda</a>
+</nav>
 
 <dialog id="dlg">
   <form id="form" method="dialog">
     <h3 id="dTitle">Reservar vaga</h3>
+    <label id="qRow">Tipo de vaga
+      <select id="qcat"></select>
+    </label>
+    <p class="note warn" id="noFree" hidden>Não há vagas livres neste tipo agora.</p>
     <label>Placa do veículo
       <input id="plate" required maxlength="7" autocapitalize="characters" autocomplete="off" placeholder="ABC1D23" pattern="[A-Za-z]{3}[0-9][A-Za-z0-9][0-9]{2}">
     </label>
     <label class="chk" id="credRow"><input type="checkbox" id="cred"> <span id="credTxt"></span></label>
-    <label class="chk" id="evRow"><input type="checkbox" id="evChk"> Meu carro é elétrico e vou recarregar.</label>
+    <label class="chk" id="evRow"><input type="checkbox" id="evChk"> <span>Meu carro é elétrico e vou recarregar.</span></label>
     <p class="note">A reserva vale por 15 minutos.</p>
     <div class="actions">
       <button type="button" class="btn ghost" id="dCancel">Voltar</button>
-      <button type="submit" class="btn">Confirmar reserva</button>
+      <button type="submit" class="btn" id="dOk">Confirmar</button>
     </div>
   </form>
 </dialog>
